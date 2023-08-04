@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link, withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import * as actions from "../store/actions/auth";
+import { withRouter } from "react-router-dom";
 import DesktopContainer from "./Layout/DesktopContainer";
 import MobileContainer from "./Layout/MobileContainer";
 
@@ -22,15 +20,4 @@ class CustomLayout extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    logout: () => dispatch(actions.logout())
-  };
-};
-
-export default withRouter(
-  connect(
-    null,
-    mapDispatchToProps
-  )(CustomLayout)
-);
+export default withRouter(CustomLayout);
