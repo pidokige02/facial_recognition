@@ -3,3 +3,6 @@ env
 **/__pycache__
 node_modules
 build
+
+# Django stuff:
+db.sqlite3
