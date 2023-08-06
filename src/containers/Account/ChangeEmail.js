@@ -76,6 +76,7 @@ class ChangeEmail extends React.Component {
           });
       } else {
         this.setState({
+          loading: false,
           error: "Your emails do not match"
         });
       }
