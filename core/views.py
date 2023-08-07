@@ -33,7 +33,7 @@ def get_user_from_token(request):
 
 class FileUploadView(APIView):
     permission_classes = (AllowAny, )
-    throttle_scope = 'demo'
+    # throttle_scope = 'demo'
 
     def post(self, request, *args, **kwargs):
         file_serializer = FileSerializer(data=request.data)
