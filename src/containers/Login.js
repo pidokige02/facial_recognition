@@ -10,6 +10,7 @@ import {
 } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
+import Logo from "../assets/images/logo.svg";
 import { authLogin as login } from "../store/actions/auth";
 
 class NormalLoginForm extends React.Component {
@@ -44,7 +45,7 @@ class NormalLoginForm extends React.Component {
     if (authenticated) {
       return <Redirect to="/" />;
     }
-    
+
     return (
       <div style={{ marginTop: "100px" }}>
         <Grid
@@ -54,7 +55,7 @@ class NormalLoginForm extends React.Component {
         >
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as="h2" color="teal" textAlign="center">
-              <Image src="/logo.png" /> Login to your account
+            <Image src={Logo} /> Login to your account
             </Header>
             <Form size="large" onSubmit={this.handleSubmit}>
               <Segment stacked>
