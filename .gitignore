@@ -6,3 +6,6 @@ build
 
 # Django stuff:
 db.sqlite3
+
+media
+static_root
