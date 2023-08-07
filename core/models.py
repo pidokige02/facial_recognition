@@ -20,7 +20,7 @@ class File(models.Model):
     def __str__(self):
         return self.file.name
 
-    
+
 class User(AbstractUser):
     is_member = models.BooleanField(default=False)
     on_free_trial = models.BooleanField(default=True)
@@ -48,6 +48,15 @@ class Payment(models.Model):
         return self.user.username
 
 
+class TrackedRequest(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    endpoint = models.CharField(max_length=50)
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username
+
+    
 def post_save_user_receiver(sender, instance, created, *args, **kwargs):
     if created:
         import datetime
