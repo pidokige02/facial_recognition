@@ -2,7 +2,6 @@ import React from "react";
 import {
   Segment,
   Header,
-  Divider,
   Icon,
   Dimmer,
   Loader,
@@ -11,6 +10,7 @@ import {
   Button
 } from "semantic-ui-react";
 import Shell from "./Shell";
+import SubscribeForm from "./SubscribeForm";
 import ShortParagraphIMG from "../../assets/images/short_paragraph.png";
 import { authAxios } from "../../utils";
 import { billingURL } from "../../constants";
@@ -57,6 +57,7 @@ class Billing extends React.Component {
           <React.Fragment>
             <p>Your free trial ends on 19 June 2019</p>
             <p>API requests this month: 20</p>
+            <SubscribeForm handleUserDetails={this.handleUserDetails} />
           </React.Fragment>
         ) : details.membershipType === member ? (
           <React.Fragment>
@@ -67,11 +68,7 @@ class Billing extends React.Component {
         ) : details.membershipType === not_member ? (
           <React.Fragment>
             <p>Your free trial has ended</p>
-            <Form>
-              <Form.Field>
-                <input placeholder="card details" />
-              </Form.Field>
-            </Form>
+            <SubscribeForm handleUserDetails={this.handleUserDetails} />
           </React.Fragment>
         ) : null}
       </Segment>
