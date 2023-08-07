@@ -21,3 +21,7 @@ class TokenSerializer(serializers.ModelSerializer):
     class Meta:
         model = Token
         fields = ('pk', 'key')
+
+
+class SubscribeSerializer(serializers.Serializer):
+    stripeToken = serializers.CharField(max_length=60)
