@@ -13,6 +13,7 @@ import {
   Dimmer
 } from "semantic-ui-react";
 import axios from "axios";
+import { authAxios } from "../utils";
 import { fileUploadURL, facialRecognitionURL } from "../constants";
 import FaceIMG from "../assets/images/face.png";
 import ShortParagraphIMG from "../assets/images/short_paragraph.png";
@@ -30,11 +31,18 @@ class Demo extends React.Component {
   };
 
   handleFileChange = e => {
-    this.setState({
-      fileName: e.target.files[0].name,
-      file: e.target.files[0],
-      error: null
-    });
+    if (e.target.files[0]) {
+      const size = e.target.files[0].size;
+      if (size > 5000000) {
+        this.setState({ error: "Image size is greater than 5MB" });
+      } else {
+        this.setState({
+          fileName: e.target.files[0].name,
+          file: e.target.files[0],
+          error: null
+        });
+      }
+    }
   };
 
   handleSubmit = e => {
@@ -68,7 +76,8 @@ class Demo extends React.Component {
       }
     };
     axios
-      .post(fileUploadURL, formData, config)
+      // authAxios
+      .post(fileUploadURL, formData, config) //  facialRecognitionURL
       .then(res => {
         this.setState({
           data: res.data,
