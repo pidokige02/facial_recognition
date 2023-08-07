@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "dj_rest_auth.registration",
     'rest_framework',
     'rest_framework.authtoken',
+    'core'
 ]
 
 MIDDLEWARE = [
@@ -123,8 +124,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'build/static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -144,13 +146,9 @@ REST_FRAMEWORK = {
     ),
 }
 
-CORS_ORIGIN_WHITELIST = (
-    'http://localhost:3000',
-)
+CSRF_COOKIE_NAME = "csrftoken"
 
-
-STRIPE_SECRET_KEY = 'sk_test_51Mgb8FDVRmxkeQOrSoPpPJQhdPRbm0CRsRoNEuJ85CG6Hfr3h8IvtkprAJZPCs8DxvBfidZ3moFSQSniFv7CSqL900ZjW7xbVp'
-
+AUTH_USER_MODEL = 'core.User'
 ACCOUNT_EMAIL_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
