@@ -79,7 +79,8 @@ export const authSignup = (username, email, password1, password2) => {
         dispatch(checkAuthTimeout(3600));
       })
       .catch(err => {
-        dispatch(authFail(err.response.data.non_field_errors[0]));
+        var error = err.response.data.username + "\n" + err.response.data.email;
+        dispatch(authFail(error));
       });
   };
 };
