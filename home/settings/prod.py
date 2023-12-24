@@ -1,7 +1,11 @@
 from .base import *
 
 DEBUG = False
-ALLOWED_HOSTS += ['127.0.0.1']
+ALLOWED_HOSTS += ['127.0.0.1',
+                  '13.124.235.245',
+                  'face.hobbycoding.site'
+                  ]
+
 WSGI_APPLICATION = 'home.wsgi.prod.application'
 
 DATABASES = {
