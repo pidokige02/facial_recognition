@@ -19,7 +19,7 @@ DATABASES = {
     }
 }
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 STRIPE_PUBLISH_KEY = 'pk_test_TYooMQauvdEDq54NiTphI7jx'
 STRIPE_SECRET_KEY = 'sk_test_4eC39HqLyjWDarjtT1zdp7dc'
