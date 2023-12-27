@@ -3,6 +3,7 @@ import math
 from django.conf import settings
 from django.contrib.auth import get_user_model, authenticate
 from django.shortcuts import render
+from django.views import generic
 from rest_framework.authtoken.models import Token
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
@@ -30,6 +31,12 @@ def get_user_from_token(request):
     token = Token.objects.get(key=key)
     user = User.objects.get(id=token.user_id)
     return user
+
+class LandingPageView(generic.TemplateView):
+    template_name = "landing.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
 
 class FileUploadView(APIView):
     permission_classes = (AllowAny, )

@@ -6,7 +6,7 @@ ALLOWED_HOSTS += ['127.0.0.1',
                   'face.hobbycoding.site'
                   ]
 
-WSGI_APPLICATION = 'home.wsgi.prod.application'
+WSGI_APPLICATION = 'home.wsgi.application'
 
 DATABASES = {
     'default': {
